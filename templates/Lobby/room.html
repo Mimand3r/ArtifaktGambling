@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Room Nr. {{ lobby.id }}
+<br>
+Created at: {{ lobby.created_at }}
+<br>
+Created at: {{ lobby.updated_at }}
+<br>
+{% if players %}
+    <h4>Spieler</h4>
+    {% for player in players %}
+        {{ player.personaname }}
+        <br>
+    {% endfor %}
+{% endif %}
+<br>
+{% if user_is_in_lobby %}
+    <a href="{% url 'leave' %}">Verlasse Lobby</a>
+{% endif %}
+
+</body>
+</html>

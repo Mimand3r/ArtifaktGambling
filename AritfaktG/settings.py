@@ -39,10 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'AG_Main.apps.AgMainConfig',
     'steam_auth',
     'social_django',
-    'game_session'
+    'Lobby'
 ]
 
 MIDDLEWARE = [
@@ -113,6 +112,8 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.steam.SteamOpenId',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+LOGIN_URL = '/login/steam'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

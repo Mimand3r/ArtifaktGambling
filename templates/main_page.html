@@ -9,15 +9,20 @@
     <a href="{% url "logout" %}">Logout</a>
     <br>
     Hello, {{ user.personaname }}
-    <br>
-    <a href="{% url "new_game" %}">Mache neues Game</a>
 {% else %}
     <a href="{% url "social:begin" "steam" %}">Sign in with Steam</a>
 {% endif %}
-{% for foo in  %}
 
-{% endfor %}
-
+<br>
+<br>
+{% if lobbies %}
+    <h4>Offene Lobbies</h4>
+    {% for lobby in lobbies %}
+        Lobby - {{ lobby.created_at }} - Max Slots: {{ lobby.max_slots }}
+        <a href="{% url "join" id=lobby.id %}">Join</a>
+        <br>
+    {% endfor %}
+{% endif %}
 
 
 </body>

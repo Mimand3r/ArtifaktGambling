@@ -3,6 +3,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+from Lobby.models import Lobby
 
 
 class SteamUserManager(BaseUserManager):
@@ -41,6 +42,9 @@ class SteamUserManager(BaseUserManager):
 
 
 class SteamUser(AbstractBaseUser, PermissionsMixin):
+
+    lobby = models.ForeignKey(Lobby, on_delete=models.DO_NOTHING, blank=True, null=True)
+
     USERNAME_FIELD = 'steamid'
 
     steamid = models.CharField(max_length=17, unique=True)

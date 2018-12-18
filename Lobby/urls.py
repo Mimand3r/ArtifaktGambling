@@ -15,12 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import main_page
+from .views import *
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('social_django.urls'), name='social'),
-    path('', include('steam_auth.urls'), name='steam'),
-    path("", main_page, name='home'),
-    path('lobby/', include('Lobby.urls'), name='lobby'),
+    path('join/<int:id>', join_lobby, name='join'),
+    path('room/<int:id>', room, name='room'),
+    path('leave/', leave_lobby, name='leave')
 ]
